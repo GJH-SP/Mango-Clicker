@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mango Clicker</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@500;700;800&family=JetBrains+Mono:wght@500;700&family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+  <!-- ============ AUTH SCREEN ============ -->
+  <main id="auth-screen" class="auth-screen">
+    <div class="auth-card">
+      <p class="eyebrow">🥭 Welcome to</p>
+      <h1>Mango Clicker</h1>
+      <p class="subtitle">Harvest mangoes, buy buildings, grow your orchard empire.</p>
+
+      <div class="auth-tabs">
+        <button type="button" class="auth-tab active" data-tab="login">Log In</button>
+        <button type="button" class="auth-tab" data-tab="register">Register</button>
+      </div>
+
+      <!-- Login form -->
+      <form id="login-form" class="auth-form">
+        <label for="login-username">Username</label>
+        <input id="login-username" name="username" type="text" autocomplete="username" required>
+
+        <label for="login-password">Password</label>
+        <input id="login-password" name="password" type="password" autocomplete="current-password" required>
+
+        <button type="submit" class="primary-btn">Log In</button>
+      </form>
+
+      <!-- Register form -->
+      <form id="register-form" class="auth-form hidden">
+        <label for="register-username">Username</label>
+        <input id="register-username" name="username" type="text" autocomplete="username" required>
+
+        <label for="register-password">Password</label>
+        <input id="register-password" name="password" type="password" autocomplete="new-password" required>
+
+        <button type="submit" class="primary-btn">Create Account</button>
+      </form>
+
+      <p id="auth-error" class="auth-error hidden"></p>
+    </div>
+  </main>
+
+  <!-- ============ GAME SCREEN ============ -->
+  <main id="game-screen" class="game-screen hidden">
+    <header class="topbar">
+      <div class="topbar-brand">🥭 Mango Clicker</div>
+      <div class="topbar-user">
+        <div id="username-view" class="username-view">
+          <span id="username-display" class="username-display"></span>
+          <button id="edit-username-btn" type="button" class="icon-btn" title="Edit username" aria-label="Edit username">✏️</button>
+        </div>
+        <form id="username-edit-form" class="username-edit-form hidden">
+          <input id="username-edit-input" type="text" required autocomplete="username">
+          <button type="submit" class="mini-btn">Save</button>
+          <button type="button" id="username-edit-cancel" class="mini-btn ghost">Cancel</button>
+          <span id="username-edit-error" class="inline-error hidden"></span>
+        </form>
+        <button id="logout-btn" type="button" class="ghost-btn">Log Out</button>
+      </div>
+    </header>
+
+    <section class="stats-bar">
+      <div class="stat">
+        <span class="stat-label">Mangoes</span>
+        <span id="current-mangoes" class="stat-value">0</span>
+      </div>
+      <div class="stat">
+        <span class="stat-label">Per Second</span>
+        <span id="mps-value" class="stat-value">0</span>
+      </div>
+      <div class="stat">
+        <span class="stat-label">Lifetime</span>
+        <span id="lifetime-mangoes" class="stat-value">0</span>
+      </div>
+    </section>
+
+    <div class="game-layout">
+      <!-- Clicker -->
+      <section class="clicker-panel">
+        <button id="mango-btn" class="mango-btn" type="button" aria-label="Harvest a mango">
+          🥭
+        </button>
+        <p id="click-hint" class="click-hint">Click the mango to harvest!</p>
+        <div id="floaters" class="floaters"></div>
+      </section>
+
+      <!-- Shop / Achievements -->
+      <section class="side-panel">
+        <div class="panel-tabs">
+          <button type="button" class="panel-tab active" data-panel="shop">🏪 Shop</button>
+          <button type="button" class="panel-tab" data-panel="achievements">🏆 Achievements</button>
+        </div>
+
+        <ul id="building-list" class="panel-list building-list">
+          <!-- Building cards injected by main.js -->
+        </ul>
+
+        <ul id="achievement-list" class="panel-list achievement-list hidden">
+          <!-- Achievement cards injected by main.js -->
+        </ul>
+      </section>
+    </div>
+
+    <div id="achievement-toasts" class="achievement-toasts"></div>
+
+    <p id="game-error" class="game-error hidden"></p>
+  </main>
+
+  <script type="module" src="main.js"></script>
+</body>
+
+</html>
